@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ChevronRight, ImagePlus, Plus, Printer, Search, Star, Trash2 } from "lucide-react";
 import { useMemo, useState, type DragEvent } from "react";
 import { AdminLayout, StatCard } from "@/components/AdminLayout";
@@ -131,7 +132,7 @@ export function AdminProductsPage() {
   );
 }
 
-function FormSection({ title, children }: { title: string; children: React.ReactNode }) {
+function FormSection({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="rounded-2xl bg-card p-5 shadow-soft">
       <h2 className="mb-4 text-2xl">{title}</h2>

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ChevronRight, KeyRound, LogOut, MapPin, Package, Plus, UserRound } from "lucide-react";
 import { useState } from "react";
 import { AddressCard } from "@/components/AddressCard";
@@ -11,7 +12,7 @@ import { formatDate, formatPrice } from "@/lib/format";
 import { addresses, currentUser, getOrder, orders } from "@/mocks/commerce";
 import { useStoreShell } from "./useStoreShell";
 
-function AccountShell({ title, back, children }: { title: string; back?: string; children: React.ReactNode }) {
+function AccountShell({ title, back, children }: { title: string; back?: string; children: ReactNode }) {
   const { shell } = useStoreShell();
   return (
     <StoreLayout {...shell}>

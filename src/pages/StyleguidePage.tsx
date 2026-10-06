@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useState } from "react";
 import { FormField, PasswordField, PasswordStrength } from "@/components/FormField";
 import { BlossomMark, Logo } from "@/components/Logo";
@@ -13,7 +14,7 @@ const colors = [
   ["rose-dark", "bg-rose-dark", "#93404e"], ["ink", "bg-ink", "#2f2a2b"], ["taupe", "bg-taupe", "#6f615b"], ["gold", "bg-gold", "#c9a27a"],
 ];
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({ title, children }: { title: string; children: ReactNode }) {
   return <section className="space-y-4"><h2 className="border-b border-border pb-2 text-3xl">{title}</h2>{children}</section>;
 }
 
