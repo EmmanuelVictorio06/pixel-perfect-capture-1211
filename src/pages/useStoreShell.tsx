@@ -1,11 +1,10 @@
 import { useRouter } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
-import { StoreLayout } from "@/components/StoreLayout";
+import { useState } from "react";
 import { categories, products } from "@/mocks/catalog";
 import { cartItems as initialCart, FREE_SHIPPING_THRESHOLD } from "@/mocks/commerce";
 import type { CartItemView } from "@/mocks/types";
 
-/** Estado de demonstração (mock) compartilhado pelas telas da loja. Substitua pela lógica real. */
+/** Estado de demonstração (mock) usado pelas telas da loja. Substitua pela lógica real. */
 export function useStoreShell() {
   const router = useRouter();
   const [items, setItems] = useState<CartItemView[]>(initialCart);
@@ -26,12 +25,11 @@ export function useStoreShell() {
     setCartOpen(true);
   };
 
-  const Shell = ({ children }: { children: ReactNode }) => (
-    <StoreLayout cartItems={items} cartOpen={cartOpen} onCartOpenChange={setCartOpen} isLoggedIn categories={categories}
-      freeShippingThreshold={FREE_SHIPPING_THRESHOLD} onSearch={(q) => router.navigate({ href: `/produtos?q=${encodeURIComponent(q)}` })}
-      onChangeQuantity={changeQty} onRemove={remove}>
-      {children}
-    </StoreLayout>
-  );
-  return { Shell, items, add, changeQty, remove };
+  const shell = {
+    cartItems: items, cartOpen, onCartOpenChange: setCartOpen, isLoggedIn: true, categories,
+    freeShippingThreshold: FREE_SHIPPING_THRESHOLD,
+    onSearch: (q: string) => router.navigate({ href: `/produtos?q=${encodeURIComponent(q)}` }),
+    onChangeQuantity: changeQty, onRemove: remove,
+  };
+  return { shell, items, add, changeQty, remove };
 }
