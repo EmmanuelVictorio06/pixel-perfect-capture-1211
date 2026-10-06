@@ -18,6 +18,7 @@ import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as EsqueciSenhaRouteImport } from './routes/esqueci-senha'
 import { Route as NovaSenhaRouteImport } from './routes/nova-senha'
 import { Route as PedidoConfirmadoRouteImport } from './routes/pedido-confirmado'
+import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as ProdutosRouteImport } from './routes/produtos'
 import { Route as StyleguideRouteImport } from './routes/styleguide'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
@@ -76,6 +77,11 @@ const NovaSenhaRoute = NovaSenhaRouteImport.update({
 const PedidoConfirmadoRoute = PedidoConfirmadoRouteImport.update({
   id: '/pedido-confirmado',
   path: '/pedido-confirmado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadeRoute = PrivacidadeRouteImport.update({
+  id: '/privacidade',
+  path: '/privacidade',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProdutosRoute = ProdutosRouteImport.update({
@@ -159,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/esqueci-senha': typeof EsqueciSenhaRoute
   '/nova-senha': typeof NovaSenhaRoute
   '/pedido-confirmado': typeof PedidoConfirmadoRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/produtos': typeof ProdutosRoute
   '/styleguide': typeof StyleguideRoute
   '/admin/catalogo': typeof AdminCatalogoRoute
@@ -184,6 +191,7 @@ export interface FileRoutesByTo {
   '/esqueci-senha': typeof EsqueciSenhaRoute
   '/nova-senha': typeof NovaSenhaRoute
   '/pedido-confirmado': typeof PedidoConfirmadoRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/produtos': typeof ProdutosRoute
   '/styleguide': typeof StyleguideRoute
   '/admin/catalogo': typeof AdminCatalogoRoute
@@ -210,6 +218,7 @@ export interface FileRoutesById {
   '/esqueci-senha': typeof EsqueciSenhaRoute
   '/nova-senha': typeof NovaSenhaRoute
   '/pedido-confirmado': typeof PedidoConfirmadoRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/produtos': typeof ProdutosRoute
   '/styleguide': typeof StyleguideRoute
   '/admin/catalogo': typeof AdminCatalogoRoute
@@ -237,6 +246,7 @@ export interface FileRouteTypes {
     | '/esqueci-senha'
     | '/nova-senha'
     | '/pedido-confirmado'
+    | '/privacidade'
     | '/produtos'
     | '/styleguide'
     | '/admin/catalogo'
@@ -262,6 +272,7 @@ export interface FileRouteTypes {
     | '/esqueci-senha'
     | '/nova-senha'
     | '/pedido-confirmado'
+    | '/privacidade'
     | '/produtos'
     | '/styleguide'
     | '/admin/catalogo'
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/esqueci-senha'
     | '/nova-senha'
     | '/pedido-confirmado'
+    | '/privacidade'
     | '/produtos'
     | '/styleguide'
     | '/admin/catalogo'
@@ -313,6 +325,7 @@ export interface RootRouteChildren {
   EsqueciSenhaRoute: typeof EsqueciSenhaRoute
   NovaSenhaRoute: typeof NovaSenhaRoute
   PedidoConfirmadoRoute: typeof PedidoConfirmadoRoute
+  PrivacidadeRoute: typeof PrivacidadeRoute
   ProdutosRoute: typeof ProdutosRoute
   StyleguideRoute: typeof StyleguideRoute
   AdminCatalogoRoute: typeof AdminCatalogoRoute
@@ -392,6 +405,13 @@ declare module '@tanstack/react-router' {
       path: '/pedido-confirmado'
       fullPath: '/pedido-confirmado'
       preLoaderRoute: typeof PedidoConfirmadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidade': {
+      id: '/privacidade'
+      path: '/privacidade'
+      fullPath: '/privacidade'
+      preLoaderRoute: typeof PrivacidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/produtos': {
@@ -505,6 +525,7 @@ const rootRouteChildren: RootRouteChildren = {
   EsqueciSenhaRoute: EsqueciSenhaRoute,
   NovaSenhaRoute: NovaSenhaRoute,
   PedidoConfirmadoRoute: PedidoConfirmadoRoute,
+  PrivacidadeRoute: PrivacidadeRoute,
   ProdutosRoute: ProdutosRoute,
   StyleguideRoute: StyleguideRoute,
   AdminCatalogoRoute: AdminCatalogoRoute,
